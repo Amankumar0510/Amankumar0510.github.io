@@ -314,11 +314,12 @@ footer button{background:none;border:1px solid var(--line);border-radius:99px;pa
 /* ===== Photo projects, gallery and pop-ups ===== */
 .logo-text{white-space:nowrap;letter-spacing:.01em}
 .art-photo img{width:100%;height:100%;object-fit:cover}
-.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;max-width:980px;margin-inline:auto}
 .shot{position:relative;border-radius:var(--radius);padding:2px;background:linear-gradient(140deg,rgba(34,211,238,.55),rgba(129,140,248,.2) 45%,rgba(244,114,182,.55))}
 .shot.large{grid-column:span 2;grid-row:span 2}
 .shot button{display:block;width:100%;height:100%;border:0;padding:0;border-radius:calc(var(--radius) - 2px);overflow:hidden;position:relative;background:#050505;cursor:zoom-in}
 .shot img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/5;transition:transform .6s cubic-bezier(.2,.7,.2,1),filter .4s}
+.shot:not(.large) img{object-position:50% 0}
 .shot.large img{aspect-ratio:auto;object-position:50% 20%;position:absolute;inset:0}
 .shot span{position:absolute;inset:auto 0 0;padding:34px 14px 12px;text-align:left;font-weight:700;font-size:14px;background:linear-gradient(transparent,rgba(3,5,16,.9))}
 .shot button:hover img,.shot button:focus-visible img{transform:scale(1.07);filter:saturate(1.15) brightness(1.06)}
@@ -368,5 +369,10 @@ dialog::backdrop{background:rgba(2,4,14,.82);-webkit-backdrop-filter:blur(6px);b
   .hero-visual{min-height:370px}
   .scroll-cue{display:none}
   .section{padding-top:76px}
+}
+@media (max-width:660px){
+  .gallery{grid-template-columns:minmax(0,360px);justify-content:center}
+  .shot.large{grid-column:span 1;grid-row:span 1}
+  .shot.large img{position:static;aspect-ratio:4/5}
 }
 @media print{.aurora,.grid-bg,#boot,#net,.nav,.progress,#to-top,#glow{display:none!important}.reveal{opacity:1!important;transform:none!important}}
