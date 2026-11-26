@@ -4,8 +4,6 @@ if (window.top !== window.self && !/^(127\.0\.0\.1|localhost)$/.test(location.ho
   try { window.top.location = window.self.location.href; } catch (error) { /* the frame stays blank */ }
 }
 document.documentElement.classList.add('js');
-let savedMotion = null;
-try { savedMotion = localStorage.getItem('motion'); } catch (error) { /* storage blocked */ }
-if (!matchMedia('(prefers-reduced-motion: reduce)').matches && savedMotion !== 'off') {
+if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
   document.documentElement.classList.add('motion');
 }

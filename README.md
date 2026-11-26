@@ -9,7 +9,7 @@ Portfolio of an Electronics & Communication Engineering student working on embed
 - Dark, animated single-page design that adapts to phones and desktops
 - Interactive PID lab: a simplified browser simulation of a two-wheeled robot balancing
 - Animated signal-network background, oscilloscope traces and project illustrations
-- Respects the "reduce motion" system setting, and has a button to pause animations
+- Respects the "reduce motion" system setting
 - Plain HTML, CSS and JavaScript, with no libraries and no build step
 
 ## Run locally

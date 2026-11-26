@@ -384,16 +384,4 @@
     lightbox.showModal();
   }));
 
-  /* ---------- Pause / resume animations ---------- */
-  const toggle = $('#motion-toggle');
-  const label = () => { toggle.textContent = motion() ? 'Pause animations' : 'Play animations'; toggle.setAttribute('aria-pressed', String(!motion())); };
-  toggle.addEventListener('click', () => {
-    root.classList.toggle('motion');
-    localStorage.setItem('motion', motion() ? 'on' : 'off');
-    endBoot();
-    reveals.forEach(el => el.classList.add('in'));
-    $$('[data-count]').forEach(el => { el.textContent = Number(el.dataset.count).toFixed(Number(el.dataset.decimals || 0)); });
-    onScroll(); label();
-  });
-  label();
 })();
