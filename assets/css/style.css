@@ -108,7 +108,8 @@ h1{margin:20px 0 10px;line-height:1.08}
 .motion .ring-b{animation:spin 40s linear infinite reverse}
 @keyframes spin{to{transform:rotate(360deg)}}
 .orbit{position:absolute;inset:-46px;z-index:3;pointer-events:none}
-.orbit li{--a:calc(var(--i) * 60deg - 90deg);position:absolute;inset:0;transform:rotate(var(--a))}
+.orbit li:nth-child(2){--i:1}.orbit li:nth-child(3){--i:2}.orbit li:nth-child(4){--i:3}.orbit li:nth-child(5){--i:4}.orbit li:nth-child(6){--i:5}
+.orbit li{--a:calc(var(--i,0) * 60deg - 90deg);position:absolute;inset:0;transform:rotate(var(--a))}
 .orbit span{position:absolute;left:100%;top:50%;transform:translate(-50%,-50%) rotate(calc(-1 * var(--a)));padding:5px 12px;border-radius:99px;font-size:12.5px;font-weight:700;white-space:nowrap;background:#10152f;border:1px solid rgba(129,140,248,.55);box-shadow:0 0 18px -4px rgba(129,140,248,.8)}
 .motion .orbit{animation:spin 34s linear infinite}
 .motion .orbit span{animation:counter 34s linear infinite}
@@ -255,6 +256,20 @@ h2{font-size:clamp(30px,4.4vw,48px);line-height:1.18;letter-spacing:-.02em;margi
 .art-light .halo{fill:var(--c);stroke:none;opacity:.12}
 .motion .art-light .halo{animation:halo 2.8s ease-in-out infinite}
 @keyframes halo{50%{opacity:.5}}
+
+.art-path .floorgrid path{stroke-width:1.2;opacity:.35}
+.art-path .shadow{stroke-width:2;opacity:.3;stroke-dasharray:4 7}
+.art-path .drops{stroke-width:1.2;opacity:.45;stroke-dasharray:3 5}
+.art-path .trail{stroke-width:4;stroke-dasharray:360;filter:drop-shadow(0 0 6px var(--c))}
+.motion .art-path .trail{animation:fly 5s ease-in-out infinite}
+@keyframes fly{0%{stroke-dashoffset:360}65%,88%{stroke-dashoffset:0}100%{stroke-dashoffset:-360}}
+.art-path .start{fill:#34d399;stroke:none}
+.art-path .way{fill:#fbbf24;stroke:none}
+.art-path .craft circle,.art-path .craft path{stroke:#22d3ee;stroke-width:2.4}
+.art-path .craft .halo{stroke:none;fill:#22d3ee;opacity:.16}
+.art-path .craft{transform-origin:270px 42px}
+.motion .art-path .craft{animation:bob 2.2s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-6px)}}
 
 /* ===== PID lab ===== */
 .lab{display:grid;grid-template-columns:1.6fr 1fr;gap:20px}

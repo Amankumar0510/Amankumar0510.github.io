@@ -207,7 +207,7 @@
 
   /* ---------- Marquee: duplicate the items once for a seamless loop ---------- */
   const track = $('#marquee-track');
-  track.innerHTML += track.innerHTML;
+  [...track.children].forEach(item => track.append(item.cloneNode(true)));
 
   /* ---------- Pointer effects ---------- */
   if (finePointer) {
