@@ -24,12 +24,12 @@ Then open <http://localhost:8000/>.
 
 | File | Purpose |
 |---|---|
-| `index.html` | All page content |
+| `index.html` | Generated page (built from private content data) |
 | `assets/css/style.css` | Design, animations and responsive layout |
 | `assets/js/main.js` | Canvas effects, filters and the PID simulator |
 | `assets/img/` | Photo, schematic and icons |
 
-To change the photo, replace `assets/img/photo.jpg` with a square image of the same name.
+
 
 ## Credits
 

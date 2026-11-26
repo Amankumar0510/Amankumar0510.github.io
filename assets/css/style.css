@@ -311,6 +311,32 @@ footer button{background:none;border:1px solid var(--line);border-radius:99px;pa
 #to-top{position:fixed;right:20px;bottom:20px;z-index:90;width:46px;height:46px;border-radius:50%;border:0;background:var(--grad);color:#070914;font-size:20px;font-weight:800;opacity:0;visibility:hidden;transform:translateY(12px);transition:.3s}
 #to-top.show{opacity:1;visibility:visible;transform:none}
 
+/* ===== Photo projects, gallery and pop-ups ===== */
+.logo-text{white-space:nowrap;letter-spacing:.01em}
+.art-photo img{width:100%;height:100%;object-fit:cover}
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.shot{position:relative;border-radius:var(--radius);padding:2px;background:linear-gradient(140deg,rgba(34,211,238,.55),rgba(129,140,248,.2) 45%,rgba(244,114,182,.55))}
+.shot.large{grid-column:span 2;grid-row:span 2}
+.shot button{display:block;width:100%;height:100%;border:0;padding:0;border-radius:calc(var(--radius) - 2px);overflow:hidden;position:relative;background:#050505;cursor:zoom-in}
+.shot img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/5;transition:transform .6s cubic-bezier(.2,.7,.2,1),filter .4s}
+.shot.large img{aspect-ratio:auto;object-position:50% 20%;position:absolute;inset:0}
+.shot span{position:absolute;inset:auto 0 0;padding:34px 14px 12px;text-align:left;font-weight:700;font-size:14px;background:linear-gradient(transparent,rgba(3,5,16,.9))}
+.shot button:hover img,.shot button:focus-visible img{transform:scale(1.07);filter:saturate(1.15) brightness(1.06)}
+.js.motion .shot.reveal.in:hover{transform:translateY(-6px)}
+dialog{margin:auto;border:2px solid transparent;border-radius:24px;color:var(--text);background:linear-gradient(#0c1024,#0c1024) padding-box,var(--grad) border-box;box-shadow:0 40px 120px -30px rgba(129,140,248,.75)}
+dialog::backdrop{background:rgba(2,4,14,.82);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.motion dialog[open]{animation:pop .28s cubic-bezier(.2,.8,.2,1)}
+@keyframes pop{from{opacity:0;transform:translateY(18px) scale(.96)}}
+.dialog-close{position:absolute;right:12px;top:10px;width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:rgba(8,10,25,.8);font-size:22px;line-height:1}
+#mail-dialog{width:min(430px,92vw);padding:30px 26px 26px;text-align:center}
+#mail-dialog h3{font-size:22px}
+.mail-address{margin:6px 0 18px;color:#c7d2fe;word-break:break-all;user-select:all}
+.mail-options{display:grid;gap:10px}
+.mail-options .btn{justify-content:center}
+#lightbox{max-width:min(92vw,620px);padding:12px;text-align:center}
+#lightbox img{max-height:76vh;width:auto;margin:0 auto;border-radius:14px}
+#lightbox p{padding:10px 40px 2px;font-weight:700}
+
 /* ===== Responsive ===== */
 @media (max-width:1020px){
   .hero-grid,.about-grid,.lab{grid-template-columns:1fr}

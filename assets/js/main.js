@@ -191,7 +191,7 @@
 
   /* ---------- Typed role line ---------- */
   const typed = $('#typed');
-  const words = ['Embedded Systems', 'IoT Devices', 'Drone Technology', 'PCB Design', 'Robotics', 'Signals & Sensors'];
+  const words = typed.dataset.words.split('|');
   let word = 0, chars = words[0].length, deleting = true;
   (function type() {
     let wait = 70;
@@ -355,6 +355,34 @@
     }
     setTimeout(() => { copy.textContent = 'Copy email'; }, 2500);
   });
+
+  /* ---------- Pop-ups: email options and photo viewer ---------- */
+  const mailDialog = $('#mail-dialog'), lightbox = $('#lightbox');
+  const canDialog = typeof mailDialog.showModal === 'function';
+  $$('dialog').forEach(dialog => {
+    $('.dialog-close', dialog).addEventListener('click', () => dialog.close());
+    dialog.addEventListener('click', e => { if (e.target === dialog) dialog.close(); });   // click outside to close
+  });
+  /* A plain mailto: link does nothing when the computer has no email app, so offer webmail and copy as well. */
+  $$('a[href^="mailto:"]').filter(a => !a.dataset.direct).forEach(a => a.addEventListener('click', e => {
+    if (!canDialog) return;
+    e.preventDefault();
+    mailDialog.showModal();
+  }));
+  const mailCopy = $('#mail-copy');
+  mailCopy.addEventListener('click', async () => {
+    try { await navigator.clipboard.writeText(mailCopy.dataset.email); mailCopy.textContent = 'Copied ✓'; }
+    catch (error) { mailCopy.textContent = 'Select the address above'; }
+    setTimeout(() => { mailCopy.textContent = 'Copy address'; }, 2500);
+  });
+  $$('.shot button').forEach(button => button.addEventListener('click', () => {
+    if (!canDialog) return;
+    const picture = $('img', button), large = $('img', lightbox);
+    large.src = picture.src;
+    large.alt = picture.alt;
+    $('p', lightbox).textContent = picture.alt;
+    lightbox.showModal();
+  }));
 
   /* ---------- Pause / resume animations ---------- */
   const toggle = $('#motion-toggle');
